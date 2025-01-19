@@ -7,6 +7,8 @@ C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\bin\Debug\net9.0
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\bin\Debug\net9.0\MyCookBookApp.runtimeconfig.json
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\bin\Debug\net9.0\MyCookBookApp.dll
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\bin\Debug\net9.0\MyCookBookApp.pdb
+C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.csproj.AssemblyReference.cache
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.AssemblyInfoInputs.cache
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.AssemblyInfo.cs
@@ -14,6 +16,7 @@ C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.RazorAssemblyInfo.cache
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.RazorAssemblyInfo.cs
+C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.sourcelink.json
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\scopedcss\bundle\MyCookBookApp.styles.css
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\scopedcss\projectbundle\MyCookBookApp.bundle.scp.css
@@ -90,6 +93,7 @@ C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\staticwebassets\msbuild.buildMultiTargeting.MyCookBookApp.props
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\staticwebassets\msbuild.buildTransitive.MyCookBookApp.props
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\staticwebassets.pack.json
+C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBo.D39A3E8C.Up2Date
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.dll
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\refint\MyCookBookApp.dll
 C:\Users\kenya\OneDrive\Desktop\MyCookBookProject\MyCookBookApp\obj\Debug\net9.0\MyCookBookApp.pdb
