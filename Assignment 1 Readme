@@ -1,0 +1,33 @@
+# Assignment 1 Highlights
+
+**Date:** 1/15/2024  
+**Assignment #:** 1  
+
+## Submitted Items
+
+### Environment Setup
+- Installed and configured required tools:
+  - Visual Studio Code
+  - .NET Core SDK (latest version)
+  - Postman for API testing
+
+### Folder Structure Created
+- Main project folder: `MyCookBookProject`
+- Subfolders:
+  - `MyCookBookApi` (for the back-end API)
+  - `MyCookBookApp` (for the front-end MVC application)
+
+### Back-End API Application (MyCookBookApi)
+- Created a new `.NET Core Web API` project.
+- Added a custom API endpoint (`/api/recipe`) that returns a static JSON object for a recipe.
+- Tested the API endpoint using Postman and verified the JSON response.
+
+### Front-End MVC Application (MyCookBookApp)
+- Created a new `.NET Core MVC` project.
+- Renamed the default `Index.cshtml` file to `HomePage.cshtml`.
+- Updated `HomeController.cs` to reflect the new view name.
+- Tested the application in the browser to confirm the renamed page loads successfully.
+
+### Testing Summary
+- Verified the `/api/recipe` endpoint returns the correct JSON object using Postman.
+- Confirmed the MVC application loads the renamed homepage correctly in the browser.
