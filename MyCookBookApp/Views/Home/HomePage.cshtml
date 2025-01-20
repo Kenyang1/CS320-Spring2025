@@ -4,12 +4,19 @@
     <h1 class="display-4 text-center mb-4">Welcome to MyCookBook</h1>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <ul class="list-group">
-                @foreach (var recipe in Model)
-                {
-                    <li class="list-group-item">@recipe.Name</li>
-                }
-            </ul>
+            @if (Model != null && Model.Any()) // Check if the model is not null and has items
+            {
+                <ul class="list-group">
+                    @foreach (var recipe in Model)
+                    {
+                        <li class="list-group-item">@recipe.Name</li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <p class="text-center">No recipes available.</p> // Display a message if no recipes
+            }
         </div>
     </div>
 </div>
