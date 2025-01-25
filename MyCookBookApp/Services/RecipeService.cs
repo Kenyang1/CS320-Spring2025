@@ -27,5 +27,18 @@ namespace MyCookBookApp.Services
 
             return recipes ?? new List<Recipe>();
         }
+
+        public async Task<List<Recipe>> SearchRecipesAsync(string query) {
+
+            // Perform the HTTP POST request
+            var payload = new { Query = query };
+            var content = new StringContent(JsonConvert.SerialzeObject(payload), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("https://localhost:5090/api/recpie/search", content);
+
+            response.EnsureSuccessStatusCode();
+
+            var responseString = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<List<Recipe>>(responseString);
+        }
     }
 }

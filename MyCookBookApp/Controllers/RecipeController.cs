@@ -17,5 +17,15 @@ namespace MyCookBookApp.Controllers
             var recipes = await _recipeService.GetRecipesAsync();
             return View(recipes);
         }
+
+        public async Task<IsActionResult> Search(string query) 
+        {
+            if(string.IsNullOrWhiteSpace(query))
+            {
+                return RedirectToAction("Index");
+            }
+            var recipes = await _recipeService.SearchRecipesAsync(query);
+            return View("Index", recipes);
+        }
     }
 }
