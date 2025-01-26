@@ -18,14 +18,15 @@ namespace MyCookBookApp.Controllers
             return View(recipes);
         }
 
-        public async Task<IsActionResult> Search(string query) 
+        public async Task<IActionResult> Search(string query) 
         {
-            if(string.IsNullOrWhiteSpace(query))
+            if (string.IsNullOrWhiteSpace(query))
             {
                 return RedirectToAction("Index");
             }
             var recipes = await _recipeService.SearchRecipesAsync(query);
             return View("Index", recipes);
         }
+
     }
 }

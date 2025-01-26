@@ -2,6 +2,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using MyCookBookApp.Models;
+using System.Text;
 
 namespace MyCookBookApp.Services
 {
@@ -28,17 +29,17 @@ namespace MyCookBookApp.Services
             return recipes ?? new List<Recipe>();
         }
 
-        public async Task<List<Recipe>> SearchRecipesAsync(string query) {
-
+        public async Task<List<Recipe>> SearchRecipesAsync(string query)
+        {
             // Perform the HTTP POST request
             var payload = new { Query = query };
-            var content = new StringContent(JsonConvert.SerialzeObject(payload), Encoding.UTF8, "application/json");
-            var response = await _httpClient.PostAsync("https://localhost:5090/api/recpie/search", content);
+            var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PostAsync("http://localhost:5090/api/recipe/search", content);
 
             response.EnsureSuccessStatusCode();
 
             var responseString = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<List<Recipe>>(responseString);
+            return JsonConvert.DeserializeObject<List<Recipe>>(responseString) ?? new List<Recipe>();
         }
     }
 }
