@@ -1,37 +1,40 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCookBookApi.Models;
-using System.Linq; 
+using System.Linq;
 
-[ApiController]
-[Route("api/[controller]")]
-public class RecipeController : ControllerBase
+namespace MyCookBookApi.Controllers
 {
-    private static readonly List<Recipe> Recipes = new List<Recipe>
+    [ApiController]
+    [Route("api/[controller]")]
+    public class RecipeController : ControllerBase
     {
-        new Recipe { Id = 1, Name = "Pasta", Ingredients = new List<string> { "Pasta", "Tomato Sauce" }, Steps = "Boil pasta." },
-        new Recipe { Id = 2, Name = "Salad", Ingredients = new List<string> { "Lettuce", "Tomatoes" }, Steps = "Mix all ingredients." }
-    };
-
-    // GET: api/recipe
-    [HttpGet]
-    public IActionResult GetRecipes()
-    {
-        return Ok(Recipes);
-    }
-
-    // POST: api/recipe/search
-    [HttpPost("search")]
-    public IActionResult Search([FromBody] RecipeSearchRequest request)
-    {
-        if (string.IsNullOrWhiteSpace(request.Query))
+        private static readonly List<Recipe> Recipes = new List<Recipe>
         {
-            return BadRequest("Query cannot be empty.");
+            new Recipe { Id = 1, Name = "Pasta", Ingredients = new List<string> { "Pasta", "Tomato Sauce" }, Steps = "Boil pasta." },
+            new Recipe { Id = 2, Name = "Salad", Ingredients = new List<string> { "Lettuce", "Tomatoes" }, Steps = "Mix all ingredients." }
+        };
+
+        // GET: api/recipe
+        [HttpGet]
+        public IActionResult GetRecipes()
+        {
+            return Ok(Recipes);
         }
 
-        var results = Recipes
-            .Where(r => r.Name.Contains(request.Query, System.StringComparison.OrdinalIgnoreCase))
-            .ToList();
+        // POST: api/recipe/search
+        [HttpPost("search")]
+        public IActionResult Search([FromBody] RecipeSearchRequest request)
+        {
+            if (string.IsNullOrWhiteSpace(request.Query))
+            {
+                return BadRequest("Query cannot be empty.");
+            }
 
-        return Ok(results);
+            var results = Recipes
+                .Where(r => r.Name.Contains(request.Query, System.StringComparison.OrdinalIgnoreCase))
+                .ToList();
+
+            return Ok(results);
+        }
     }
 }
