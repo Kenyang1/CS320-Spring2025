@@ -10,23 +10,32 @@ namespace MyCookBookApi.Tests
     public class RecipeControllerTests
     {
         [Fact]
-        public void Search_ShouldReturnRecipes_WhenQueryIsValid()
+        public void Search_ShouldReturnEmptyList_WhenQueryDoesNotMatchAnyRecipe()
         {
             // Step 1: Set up the test scenario
             var controller = new RecipeController();
 
-            // Step 2: Call the Search method
-            var result = controller.Search(new RecipeSearchRequest { Query = "Pasta" });
+            // Step 2: Call the Search method with a query that doesn't exist
+            var result = controller.Search(new RecipeSearchRequest { Query = "Pizza" });
 
             // Step 3: Assert: Check if the result is what we expected
             var okResult = Assert.IsType<OkObjectResult>(result);
             var recipes = Assert.IsType<List<Recipe>>(okResult.Value);
-            Assert.NotEmpty(recipes);
-
-            foreach (var recipe in recipes)
-            {
-                Assert.Contains("Pasta", recipe.Name, StringComparison.OrdinalIgnoreCase);
-            }
+            Assert.Empty(recipes);
         }
+        [Fact]
+        public void Search_ShouldReturnBadRequest_WhenQueryIsOnlySpace(){
+            // Step 1: Set up the test scenario
+            var controller = new RecipeController();
+            //Step 2: Call the search method with a query that is Case sensitive
+            var result = controller.Search(new RecipeSearchRequest {Query = " "});
+
+            //Step 3: Assert: Check if the result is what we expected
+            // Check if it returns a space
+            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
+            var errorMessages = Assert.IsType<string>(badRequestResult.Value);
+            Assert.Contains("Query cannot be empty.", errorMessages);
+        }
+    
     }
 }
