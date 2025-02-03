@@ -1,41 +1,57 @@
-using Xunit; // XUnit is used for testing
-using MyCookBookApi.Controllers; // Reference to the RecipeController class
-using MyCookBookApi.Models; // Reference to the models (like Recipe and RecipeSearchRequest)
-using Microsoft.AspNetCore.Mvc; // Necessary for working with ActionResults (OkObjectResult, BadRequestObjectResult)
-using System; // For StringComparison
-using System.Collections.Generic; // For List<T>
+using Xunit;
+using MyCookBookApi.Controllers;
+using MyCookBookApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using MyCookBookApp.Services;
+using Moq; // Moq for mocking dependencies
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MyCookBookApi.Tests
 {
     public class RecipeControllerTests
     {
+        // Test when query doesn't match any recipe
         [Fact]
-        public void Search_ShouldReturnEmptyList_WhenQueryDoesNotMatchAnyRecipe()
+        public async Task Search_ShouldReturnEmptyList_WhenQueryDoesNotMatchAnyRecipe()
         {
-            // Step 1: Set up the test scenario
-            var controller = new RecipeController();
+            // Arrange: Create a mock RecipeService
+            var mockRecipeService = new Mock<RecipeService>(MockBehavior.Strict, new System.Net.Http.HttpClient());
+            mockRecipeService.Setup(service => service.SearchRecipesAsync("Pizza"))
+                             .ReturnsAsync(new List<Recipe>()); // No matching recipe
 
-            // Step 2: Call the Search method with a query that doesn't exist
-            var result = controller.Search(new RecipeSearchRequest { Query = "Pizza" });
+            // Create a controller and pass the mocked RecipeService
+            var controller = new RecipeController(mockRecipeService.Object);
 
-            // Step 3: Assert: Check if the result is what we expected
+            // Act: Call the Search method with a query that doesn't match any recipe
+            var result = await controller.Search("Pizza");
+
+            // Assert: Check if the result is what we expected
             var okResult = Assert.IsType<OkObjectResult>(result);
             var recipes = Assert.IsType<List<Recipe>>(okResult.Value);
-            Assert.Empty(recipes);
+            Assert.Empty(recipes); // Ensure the list is empty
         }
-        [Fact]
-        public void Search_ShouldReturnBadRequest_WhenQueryIsOnlySpace(){
-            // Step 1: Set up the test scenario
-            var controller = new RecipeController();
-            //Step 2: Call the search method with a query that is Case sensitive
-            var result = controller.Search(new RecipeSearchRequest {Query = " "});
 
-            //Step 3: Assert: Check if the result is what we expected
-            // Check if it returns a space
-            var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
-            var errorMessages = Assert.IsType<string>(badRequestResult.Value);
-            Assert.Contains("Query cannot be empty.", errorMessages);
+        // Test when the query is empty (or just whitespace)
+        [Fact]
+        public async Task Search_ShouldReturnEmptyList_WhenQueryIsEmpty()
+        {
+            // Arrange: Create a mock RecipeService
+            var mockRecipeService = new Mock<RecipeService>(MockBehavior.Strict, new System.Net.Http.HttpClient());
+            mockRecipeService.Setup(service => service.SearchRecipesAsync(It.IsAny<string>()))
+                             .ReturnsAsync(new List<Recipe>()); // Return an empty list for any query
+
+            var controller = new RecipeController(mockRecipeService.Object);
+
+            // Act: Call the Search method with an empty string
+            var result = await controller.Search("");
+
+            // Assert: Check if the result is an empty list
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<List<Recipe>>(viewResult.Model);
+            Assert.Empty(model); // Ensure the model is empty
         }
-    
+
+        // You can add more tests as needed for different scenarios (valid query, invalid query, etc.)
     }
 }

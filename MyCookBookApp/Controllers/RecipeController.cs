@@ -22,9 +22,15 @@ namespace MyCookBookApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(query))
             {
-                return RedirectToAction("Index");
+                ViewData["ErrorMessage"] = "Query cannot be empty.";
+                return View("Index", new List<Recipe>());
             }
             var recipes = await _recipeService.SearchRecipesAsync(query);
+
+            if (recipes == null) {
+                ViewData["ErrorMessage"] = "Error has occured while searching.";
+                return View("Index", new List<Recipe>());
+            }
             return View("Index", recipes);
         }
 

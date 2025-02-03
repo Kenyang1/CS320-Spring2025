@@ -2,14 +2,20 @@
 
 <div class="container mt-5">
     <h1 class="display-4 text-center mb-4">Recipes</h1>
-    <!-- Search Form >-->
 
+    <!-- Search Form -->
     <form asp-action="Search" method="get" class="mb-4">
-    <div class="input-group">
-        <input type="text" name="query" class="form-control" placeholder="Search recipes..." required />
-        <button type="submit" class="btn btn-primary">Search</button>
-    </div>
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search recipes..." />
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
     </form>
+
+    <!-- Display Error Message if search query is invalid -->
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-warning">@ViewData["ErrorMessage"]</div>
+    }
 
     <div class="row">
         @if (Model != null && Model.Any())
@@ -27,7 +33,7 @@
                 </div>
             }
         }
-        else
+        else if (ViewData["SearchError"] == null)
         {
             <div class="col-12">
                 <p class="text-center">No recipes available at the moment. Please check back later!</p>

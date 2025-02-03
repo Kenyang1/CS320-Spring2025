@@ -36,6 +36,10 @@ namespace MyCookBookApp.Services
             var content = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8, "application/json");
             var response = await _httpClient.PostAsync("http://localhost:5090/api/recipe/search", content);
 
+            if (response.StatusCode == System.Net.HttpStatusCode.BadRequest) 
+            {
+                return new List<Recipe>();
+            }
             response.EnsureSuccessStatusCode();
 
             var responseString = await response.Content.ReadAsStringAsync();
