@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "kLsZE/oQQV0=",
+  "dgSpecHash": "M88GO9mIiqE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\kenya\\OneDrive\\Desktop\\MyCookBookProject\\MyCookBookApi.Tests\\MyCookBookApi.Tests.csproj",
+  "projectFilePath": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApi.Tests\\MyCookBookApi.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\kenya\\.nuget\\packages\\castle.core\\5.1.1\\castle.core.5.1.1.nupkg.sha512",
     "C:\\Users\\kenya\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
