@@ -25,20 +25,11 @@ namespace MyCookBookApi.Controllers
         [HttpPost("search")]
         public IActionResult Search([FromBody] RecipeSearchRequest request)
         {
-            //Checks if theres a space in query
-            if (request == null || string.IsNullOrWhiteSpace(request.Query))
-            {
-                return BadRequest(new { message = "There are no recipes with that name. "});
-                
-            }
 
             var results = Recipes
                 .Where(r => r.Name.Contains(request.Query, System.StringComparison.OrdinalIgnoreCase))
                 .ToList();
                 
-            if (!results.Any()) {
-                return BadRequest("No matching recipes found.");
-            }
 
             return Ok(results);
         }

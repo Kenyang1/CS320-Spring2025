@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCookBookApp.Services;
+using MyCookBookApp.Models;
 using System.Threading.Tasks;
 
 namespace MyCookBookApp.Controllers
@@ -22,7 +23,7 @@ namespace MyCookBookApp.Controllers
         {
             if (string.IsNullOrWhiteSpace(query))
             {
-                ViewData["ErrorMessage"] = "Query cannot be empty.";
+                ViewData["ErrorMessage"] = "Please enter a keyword to find recipes";
                 return View("Index", new List<Recipe>());
             }
             var recipes = await _recipeService.SearchRecipesAsync(query);
