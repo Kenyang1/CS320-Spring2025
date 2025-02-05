@@ -26,6 +26,15 @@ namespace MyCookBookApi.Controllers
         public IActionResult Search([FromBody] RecipeSearchRequest request)
         {
 
+            if (string.IsNullOrWhiteSpace(request.Query)) {
+                return BadRequest("Invalid search query. Please enter a valid recipe name.");
+            }
+
+            if (request.Query.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)))
+            {
+                return BadRequest("Invalid search query. Special characters are not allowed.");
+            }            
+            
             var results = Recipes
                 .Where(r => r.Name.Contains(request.Query, System.StringComparison.OrdinalIgnoreCase))
                 .ToList();

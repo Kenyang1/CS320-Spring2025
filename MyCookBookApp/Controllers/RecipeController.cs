@@ -34,6 +34,7 @@ namespace MyCookBookApp.Controllers
             }
             return View("Index", recipes);
         }
+        
 
     }
 }
