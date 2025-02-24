@@ -1,46 +1,74 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using MyCookBookApi.Models;
-using System.Linq;
+using MyCookBookApi.Services;
 
 namespace MyCookBookApi.Controllers
 {
-    [ApiController]
     [Route("api/[controller]")]
+    [ApiController]
     public class RecipeController : ControllerBase
     {
-        private static readonly List<Recipe> Recipes = new List<Recipe>
+        private readonly IRecipeService _recipeService;
+
+        public RecipeController(IRecipeService recipeService)
         {
-            new Recipe { Id = 1, Name = "Pasta", Ingredients = new List<string> { "Pasta", "Tomato Sauce" }, Steps = "Boil pasta." },
-            new Recipe { Id = 2, Name = "Salad", Ingredients = new List<string> { "Lettuce", "Tomatoes" }, Steps = "Mix all ingredients." }
-        };
+            _recipeService = recipeService;
+        }
 
         // GET: api/recipe
         [HttpGet]
-        public IActionResult GetRecipes()
+        public ActionResult<IEnumerable<Recipe>> GetAllRecipes()
         {
-            return Ok(Recipes);
+            return Ok(_recipeService.GetAllRecipes());
+        }
+
+        // GET: api/recipe/{id}
+        [HttpGet("{id}")]
+        public ActionResult<Recipe> GetRecipeById(string id)
+        {
+            var recipe = _recipeService.GetRecipeById(id);
+            if (recipe == null)
+            {
+                return NotFound();
+            }
+            return Ok(recipe);
         }
 
         // POST: api/recipe/search
         [HttpPost("search")]
-        public IActionResult Search([FromBody] RecipeSearchRequest request)
+        public ActionResult<IEnumerable<Recipe>> SearchRecipes([FromBody] RecipeSearchRequest searchRequest)
         {
-
-            if (string.IsNullOrWhiteSpace(request.Query)) {
-                return BadRequest("Invalid search query. Please enter a valid recipe name.");
+            if (searchRequest == null || string.IsNullOrWhiteSpace(searchRequest.Keyword))
+            {
+                return BadRequest("Invalid search request.");
             }
 
-            if (request.Query.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)))
+            if (searchRequest.Keyword.Any(ch => !char.IsLetterOrDigit(ch) && !char.IsWhiteSpace(ch)))
             {
                 return BadRequest("Invalid search query. Special characters are not allowed.");
-            }            
+            }       
             
-            var results = Recipes
-                .Where(r => r.Name.Contains(request.Query, System.StringComparison.OrdinalIgnoreCase))
-                .ToList();
-                
+            // Ensure Categories is never null
+            searchRequest.Categories ??= new List<CategoryType>();
+            
+            var recipes = _recipeService.SearchRecipes(searchRequest);
+            return Ok(recipes);
+        }
 
-            return Ok(results);
+        // POST: api/recipe
+        [HttpPost]
+        public ActionResult<Recipe> CreateRecipe([FromBody] Recipe recipe)
+        {
+            if (recipe == null || string.IsNullOrWhiteSpace(recipe.Name))
+            {
+                return BadRequest("Invalid recipe data.");
+            }
+
+            // Generate a unique RecipeId in the backend
+            recipe.RecipeId = Guid.NewGuid().ToString();
+            _recipeService.AddRecipe(recipe);
+            return CreatedAtAction(nameof(GetRecipeById), new { id = recipe.RecipeId }, recipe);
         }
     }
 }
