@@ -13,17 +13,19 @@ namespace MyCookBookApi.Tests
             // Arrange
             var recipe = new Recipe
             {
-                Id = 1,
+                RecipeId = "123",
                 Name = "Pasta",
+                TagLine = "Classic Italian Delight",
+                Summary = "A simple yet delicious pasta dish",
                 Ingredients = new List<string> { "Pasta", "Tomato Sauce" },
-                Steps = "Boil pasta."
+                Instructions = new List<string> { "Boil water.", "Cook pasta until al dente.", "Mix with sauce." },
             };
 
             // Assert
-            Assert.Equal(1, recipe.Id);
+            Assert.Equal("123", recipe.RecipeId);
             Assert.Equal("Pasta", recipe.Name);
             Assert.Contains("Tomato Sauce", recipe.Ingredients);
-            Assert.Equal("Boil pasta.", recipe.Steps);
+            Assert.Contains("Boil pasta.", recipe.Instructions);
         }
     }
 }
