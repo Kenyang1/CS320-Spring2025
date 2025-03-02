@@ -13,7 +13,7 @@ namespace MyCookBookApi.Tests
             // Arrange
             var recipe = new Recipe
             {
-                Id = 1,
+                RecipeId = 1,
                 Name = "Pasta",
                 Ingredients = new List<string> { "Pasta", "Tomato Sauce" },
                 Steps = "Boil pasta."

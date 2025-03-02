@@ -16,7 +16,7 @@ namespace MyCookBookApi.Tests
             // Arrange: Create a test instance of the controller with sample recipes
             var controller = new RecipeController();
 
-            var request = new RecipeSearchRequest { Query = "p@sta!" };
+            var request = new RecipeSearchRequest { Keyword = "p@sta!" };
 
             // Act: Call the Search method
             var result = controller.Search(request);
