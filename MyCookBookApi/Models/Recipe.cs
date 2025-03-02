@@ -4,11 +4,11 @@ namespace MyCookBookApi.Models
     public class Recipe
     {
         public string RecipeId { get; set; }
-        public required string Name { get; set; }
-        public required string TagLine {get; set;}
-        public required string Summary {get; set;}
-        public required List<string> Instructions {get; set;} = new List<string>();
-        public required List<string> Ingredients { get; set; } = new List<string>();
+        public  string Name { get; set; }
+        public  string TagLine {get; set;}
+        public  string Summary {get; set;}
+        public  List<string> Instructions {get; set;} = new List<string>();
+        public  List<string> Ingredients { get; set; } = new List<string>();
 
         // Optional: Categories to organize recipes (e.g., Breakfast, Dinner)
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
