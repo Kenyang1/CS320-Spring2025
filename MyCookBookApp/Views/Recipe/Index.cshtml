@@ -11,7 +11,7 @@
     </div>
 
     <!-- ✅ Search Section (With Error Handling) -->
-    <form asp-action="Search" method="get" class="mb-3">
+    <form asp-action="Search" method="post" class="mb-3" onsubmit="event.preventDefault(); searchRecipes();">
         <div class="row">
             <div class="col-md-10 position-relative">
                 <input type="text" id="searchInput" name="query" class="form-control" placeholder="Search recipes...">
@@ -39,4 +39,4 @@
 @Html.Partial("_AddRecipeModal")
 
 <!-- ✅ JavaScript for Dynamic Recipe Loading -->
-<script src="~/js/recipes.js" asp-append-version="true"></script>
+<script src="~/js/recipe.js" asp-append-version="true"></script>

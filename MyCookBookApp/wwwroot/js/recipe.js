@@ -1,119 +1,124 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const BASE_URL = `${window.location.origin}/Recipe`; // Dynamically set base URL
+    const BASE_URL = `${window.location.origin}/Recipe`; // ✅ Dynamically set base URL
     let selectedCategories = [];
 
-    // Define a mapping of category numbers to their text values
+    // ✅ Define category mapping (Text Labels)
     const categoryMapping = {
-        0: "Breakfast",
-        1: "Lunch",
-        2: "Dinner",
-        3: "Dessert",
-        4: "Snack",
-        5: "Vegan",
-        6: "Vegetarian",
-        7: "GlutenFree",
-        8: "Keto",
-        9: "LowCarb",
-        10: "HighProtein"
+        0: "Breakfast", 1: "Lunch", 2: "Dinner",
+        3: "Dessert", 4: "Snack", 5: "Vegan",
+        6: "Vegetarian", 7: "GlutenFree", 8: "Keto",
+        9: "LowCarb", 10: "HighProtein"
     };
 
-    fetchRecipes();
+    fetchRecipes(); // ✅ Load recipes on page load
 
-    // Handle category selection
+    // ✅ Handle category selection in dropdown
     document.querySelectorAll("#categoryList .dropdown-item").forEach(item => {
         item.addEventListener("click", function (event) {
             event.preventDefault();
-            let categoryValue = parseInt(this.getAttribute("data-value"), 10);
-            
+            let categoryValue = this.getAttribute("data-value"); // ✅ Capture category as a string
+
             if (selectedCategories.includes(categoryValue)) {
-                // If already selected, remove it
-                selectedCategories = selectedCategories.filter(c => c !== categoryValue);
+                selectedCategories = selectedCategories.filter(c => c !== categoryValue); // ✅ Remove if already selected
             } else {
-                // Otherwise, add it
-                selectedCategories.push(categoryValue);
+                selectedCategories.push(categoryValue); // ✅ Add new selection
             }
 
-            // Update button text to display selected categories
+            // ✅ Update button text to display selected categories
             document.getElementById("categoryDropdown").innerText =
-                selectedCategories.length > 0
-                    ? selectedCategories.map(id => document.querySelector(`[data-value="${id}"]`).innerText).join(", ")
-                    : "Select Categories";
+                selectedCategories.length > 0 ? selectedCategories.join(", ") : "Select Categories";
 
-            // Update hidden input with selected categories
+            // ✅ Update hidden input with selected categories
             document.getElementById("categories").value = JSON.stringify(selectedCategories);
-            console.log("Selected Categories (Numeric):", selectedCategories);
+            console.log("✅ Selected Categories:", selectedCategories);
         });
     });
 
-    // Open the Add Recipe Modal
+    // ✅ Open Add Recipe Modal
     document.getElementById("addRecipeBtn")?.addEventListener("click", function () {
         document.getElementById("addRecipeForm").reset();
+        selectedCategories = [];
+        document.getElementById("categories").value = "[]"; // ✅ Reset categories
+        document.getElementById("categoryDropdown").innerText = "Select Categories"; 
         $('#addRecipeModal').modal('show');
     });
 
-    // Modify Save Recipe function to include selected numeric categories
+    // ✅ Handle Recipe Submission (Add Recipe)
     document.getElementById("saveRecipe").addEventListener("click", function (event) {
         event.preventDefault();
-
+    
         let recipe = {
-            recipeId: "NewRecipe_Only",
             name: document.getElementById("recipeName").value.trim(),
             tagLine: document.getElementById("tagLine").value.trim(),
             summary: document.getElementById("summary").value.trim(),
             ingredients: document.getElementById("ingredients").value.split(",").map(i => i.trim()),
             instructions: document.getElementById("instructions").value.split("\n").map(i => i.trim()),
-            categories: JSON.parse(document.getElementById("categories").value || "[]"),
+            categories: selectedCategories, // ✅ Ensure categories are sent correctly
             media: []
         };
-
-        console.log("Final Recipe Object:", recipe);
-        console.log("Updated Recipe Object:", JSON.stringify(recipe, null, 2));
-
-        // Send recipe data to API
+    
+        console.log("🔍 Sending Recipe:", JSON.stringify(recipe, null, 2));
+    
         fetch(`${BASE_URL}/Add`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(recipe)
         })
-        .then(response => response.json())
+        .then(response => response.json())  // ✅ Ensure valid JSON response
         .then(data => {
+            console.log("📜 Server Response:", data);
+    
             if (data.success) {
-                console.log("Recipe added successfully!");
+                console.log("✅ Recipe added successfully!");
                 $('#addRecipeModal').modal('hide');
-
-                // Refresh the page after a slight delay
-                setTimeout(() => {
-                    location.reload();
-                }, 500);
+                setTimeout(() => { location.reload(); }, 500);
             } else {
-                alert("Failed to add recipe: " + data.message);
+                alert("❌ Failed to add recipe: " + (data.message || "Unknown error"));
             }
         })
-        .catch(error => console.error("Error adding recipe:", error));
+        .catch(error => {
+            console.error("❌ Error adding recipe:", error);
+            alert("❌ Failed to add recipe. Check console for details.");
+        });
     });
+    
 
-    // Fetch all recipes
+    // ✅ Fetch All Recipes
     function fetchRecipes() {
-        console.log("Fetching all recipes...");
+        console.log("📥 Fetching all recipes...");
 
         fetch(`${BASE_URL}/GetAll`)
         .then(response => response.json())
         .then(recipes => {
-            console.log("Recipes loaded:", recipes);
+            console.log("📜 Recipes Loaded:", recipes);
             displayRecipes(recipes);
         })
-        .catch(error => console.error("Fetch error:", error));
+        .catch(error => console.error("❌ Fetch error:", error));
     }
 
-    // Search for recipes
+    // ✅ Add Event Listener for Search Button
+    document.getElementById("searchButton")?.addEventListener("click", function () {
+        searchRecipes();
+    });
+
+    // ✅ Handle Enter Key for Search
+    document.getElementById("searchInput").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            searchRecipes();
+        }
+    });
+
+    // ✅ Function to Search Recipes
     window.searchRecipes = function () {
         let keyword = document.getElementById("searchInput").value.trim();
         if (!keyword) {
-            fetchRecipes();
+            alert("Please enter a keyword to search.");
             return;
         }
 
-        let searchRequest = { keyword: keyword, categories: [] };
+        let searchRequest = { keyword: keyword};
+
+        console.log("🔍 Sending Search Request:", JSON.stringify(searchRequest));
 
         fetch(`${BASE_URL}/Search`, {
             method: "POST",
@@ -121,40 +126,25 @@ document.addEventListener("DOMContentLoaded", function () {
             body: JSON.stringify(searchRequest)
         })
         .then(response => response.json())
-        .then(recipes => {
-            displayRecipes(recipes);
+        .then(data => {
+            console.log("📜 Search Response:", data);
+
+            if (data.success) {
+                displayRecipes(data.recipes);
+            } else {
+                document.getElementById("recipeCards").innerHTML = `<p class="text-center text-muted">${data.message}</p>`;
+            }
         })
-        .catch(error => console.error("Search error:", error));
+        .catch(error => console.error("❌ Search error:", error));
     };
 
-    // Handle Enter key press for search
-    window.handleEnter = function (event) {
-        if (event.key === "Enter") {
-            searchRecipes();
-        }
-    };
-
-    // Show or hide the clear search button
-    window.toggleClearButton = function () {
-        let searchInput = document.getElementById("searchInput");
-        let clearButton = document.getElementById("clearSearch");
-        clearButton.style.display = searchInput.value ? "block" : "none";
-    };
-
-    // Clear search and reload all recipes
-    window.clearSearch = function () {
-        document.getElementById("searchInput").value = "";
-        document.getElementById("clearSearch").style.display = "none";
-        fetchRecipes();
-    };
-
-    // Display recipes dynamically
+    // ✅ Display Recipes Dynamically
     function displayRecipes(recipes) {
         let cardContainer = document.getElementById("recipeCards");
         cardContainer.innerHTML = "";
 
         recipes.forEach(recipe => {
-            let categoriesText = (recipe.categories || []).map(catId => categoryMapping[catId] || "Unknown").join(" | ");
+            let categoriesText = (recipe.categories || []).join(" | ");
 
             let card = `
                 <div class="mb-3">

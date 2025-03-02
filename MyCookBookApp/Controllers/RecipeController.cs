@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MyCookBookApp.Services;
-using MyCookBookApp.Models;
 using System.Threading.Tasks;
+using MyCookBookApp.Models;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
@@ -19,12 +19,10 @@ namespace MyCookBookApp.Controllers
         }
 
         // ✅ Show the Recipe Index Page
-        [HttpGet]
-        [Route("")]
-        public async Task<IActionResult> Index()
+        [HttpGet("")]
+        public IActionResult Index()
         {
-            var recipes = await _recipeService.GetRecipesAsync();
-            return View(recipes);
+            return View();
         }
 
         // ✅ Fetch All Recipes (GET /Recipe/GetAll)
@@ -42,53 +40,64 @@ namespace MyCookBookApp.Controllers
             var recipe = await _recipeService.GetRecipeByIdAsync(id);
             if (recipe == null)
             {
-                ViewData["ErrorMessage"] = "Recipe not found.";
-                return View("Index", new List<Recipe>());
+                return NotFound(new { success = false, message = "Recipe not found" });
             }
             return Json(recipe);
         }
 
         // ✅ Search for Recipes (POST /Recipe/Search)
         [HttpPost("Search")]
-        public async Task<IActionResult> Search([FromBody] RecipeSearchRequest searchRequest)
+        public async Task<IActionResult> SearchRecipes([FromBody] RecipeSearchRequest searchRequest)
         {
             if (searchRequest == null || string.IsNullOrWhiteSpace(searchRequest.Keyword))
             {
-                ViewData["ErrorMessage"] = "Please enter a keyword to find recipes.";
-                return View("Index", new List<Recipe>());
+                return Json(new { success = false, message = "Please enter a keyword to find recipes." });
             }
+
+            // ✅ Log the search request for debugging
+            Console.WriteLine($"🔍 API Received Search Request: {JsonConvert.SerializeObject(searchRequest)}");
+
+            // ✅ Convert keyword to lowercase for case-insensitive search
+            searchRequest.Keyword = searchRequest.Keyword.ToLower();
 
             var recipes = await _recipeService.SearchRecipesAsync(searchRequest);
 
             if (recipes == null || recipes.Count == 0)
             {
-                ViewData["ErrorMessage"] = "No matching recipes found.";
-                return View("Index", new List<Recipe>());
+                Console.WriteLine("❌ No recipes found for: " + searchRequest.Keyword);
+                return Json(new { success = false, message = "Recipe not found" });
             }
-            return View("Index", recipes);
+
+            Console.WriteLine($"✅ Found {recipes.Count} recipes.");
+            return Json(new { success = true, recipes });
         }
 
         // ✅ Add a Recipe (POST /Recipe/Add)
         [HttpPost("Add")]
         public async Task<IActionResult> AddRecipe([FromBody] Recipe recipe)
         {
-            Console.WriteLine("Received Recipe: " + JsonConvert.SerializeObject(recipe));
+            Console.WriteLine("🔍 Received Recipe: " + JsonConvert.SerializeObject(recipe, Formatting.Indented));
 
-            if (recipe == null || string.IsNullOrWhiteSpace(recipe.Name))
+            if (recipe == null || string.IsNullOrWhiteSpace(recipe.Name) ||
+                recipe.Ingredients == null || recipe.Ingredients.Count == 0 ||
+                recipe.Instructions == null || recipe.Instructions.Count == 0 ||
+                string.IsNullOrWhiteSpace(recipe.Summary) || recipe.Categories == null)
             {
-                ViewData["ErrorMessage"] = "Invalid recipe data. Name is required.";
-                return View("Index", new List<Recipe>());
+                Console.WriteLine("❌ Invalid recipe data received.");
+                return BadRequest(new { success = false, message = "Invalid recipe data. Please fill in all fields." });
             }
 
             bool added = await _recipeService.AddRecipeAsync(recipe);
 
             if (!added)
             {
-                ViewData["ErrorMessage"] = "Failed to add recipe.";
-                return View("Index", new List<Recipe>());
+                Console.WriteLine("❌ Failed to save recipe.");
+                return Json(new { success = false, message = "Failed to save recipe. Please try again." });
             }
 
+            Console.WriteLine("✅ Recipe successfully added.");
             return Json(new { success = true, message = "Recipe added successfully!" });
         }
+
     }
 }
