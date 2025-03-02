@@ -43,7 +43,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         },
         {
           "Name": "Vary",
@@ -92,7 +92,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         }
       ],
       "EndpointProperties": [
@@ -141,7 +141,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         },
         {
           "Name": "Vary",
@@ -204,7 +204,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         },
         {
           "Name": "Vary",
@@ -245,7 +245,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         }
       ],
       "EndpointProperties": [
@@ -286,7 +286,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 15:02:16 GMT"
+          "Value": "Sun, 02 Mar 2025 18:31:31 GMT"
         },
         {
           "Name": "Vary",
@@ -893,6 +893,304 @@
         {
           "Name": "integrity",
           "Value": "sha256-wfFuuYm+Lh6RbCeeiUqxw334b/hIOkp5j9eokGUM1Y0="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.i90f127p7r.js",
+      "AssetFile": "js/recipe.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000481000481"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i90f127p7r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw="
+        },
+        {
+          "Name": "label",
+          "Value": "js/recipe.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.i90f127p7r.js",
+      "AssetFile": "js/recipe.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i90f127p7r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw="
+        },
+        {
+          "Name": "label",
+          "Value": "js/recipe.js"
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.i90f127p7r.js.gz",
+      "AssetFile": "js/recipe.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "i90f127p7r"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g="
+        },
+        {
+          "Name": "label",
+          "Value": "js/recipe.js.gz"
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js",
+      "AssetFile": "js/recipe.js.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000481000481"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g=\""
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js",
+      "AssetFile": "js/recipe.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "7126"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-6rd12hTBcIvS7pi22QVnZzWeLif/N+BBWdB6HeECAvw="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js.gz",
+      "AssetFile": "js/recipe.js.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2078"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 02 Mar 2025 18:30:58 GMT"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-oI7rLNli0t2RI+KzD1e6pkfRZrsCc/pkpLlfXo7lD1g="
         }
       ]
     },

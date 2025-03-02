@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js",
+      "PackagePath": "staticwebassets\\js\\recipe.js"
+    },
+    {
       "Id": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

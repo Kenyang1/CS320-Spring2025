@@ -1,43 +1,42 @@
 @model List<MyCookBookApp.Models.Recipe>
 
-<div class="container mt-5">
-    <h1 class="display-4 text-center mb-4">Recipes</h1>
+@{
+    ViewData["Title"] = "Recipes";
+}
 
-    <!-- Search Form -->
-    <form asp-action="Search" method="get" class="mb-4">
-        <div class="input-group">
-            <input type="text" name="query" class="form-control" placeholder="Search recipes..." />
-            <button type="submit" class="btn btn-primary">Search</button>
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="mb-0">Recipes</h2>
+        <button id="addRecipeBtn" class="btn btn-primary" data-toggle="modal" data-target="#addRecipeModal">Add Recipe</button>
+    </div>
+
+    <!-- ✅ Search Section (With Error Handling) -->
+    <form asp-action="Search" method="get" class="mb-3">
+        <div class="row">
+            <div class="col-md-10 position-relative">
+                <input type="text" id="searchInput" name="query" class="form-control" placeholder="Search recipes...">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" id="searchButton" class="btn btn-success w-100">Search</button>
+            </div>
         </div>
     </form>
 
-    <!-- Display Error Message if search query is invalid -->
+    <!-- ✅ Display Search Error Messages -->
     @if (ViewData["ErrorMessage"] != null)
     {
-        <div class="alert alert-warning">@ViewData["ErrorMessage"]</div>
+        <div class="alert alert-warning text-center">@ViewData["ErrorMessage"]</div>
     }
 
+    <!-- ✅ Recipes Container (Now Fully Dynamic) -->
     <div class="row">
-        @if (Model != null && Model.Any())
-        {
-            foreach (var recipe in Model)
-            {
-                <div class="col-md-6 mb-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">@recipe.Name</h5>
-                            <p class="card-text"><strong>Ingredients:</strong> @string.Join(", ", recipe.Ingredients)</p>
-                            <p class="card-text"><strong>Steps:</strong> @recipe.Steps</p>
-                        </div>
-                    </div>
-                </div>
-            }
-        }
-        else if (ViewData["SearchError"] == null)
-        {
-            <div class="col-12">
-                <p class="text-center">No recipes available at the moment. Please check back later!</p>
-            </div>
-        }
+        <div class="col-md-12" id="recipeCards">
+            <!-- Recipe cards dynamically loaded here -->
+        </div>
     </div>
 </div>
+
+@Html.Partial("_AddRecipeModal")
+
+<!-- ✅ JavaScript for Dynamic Recipe Loading -->
+<script src="~/js/recipes.js" asp-append-version="true"></script>
