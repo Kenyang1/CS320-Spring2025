@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const BASE_URL = `${window.location.origin}/Recipe`; // ✅ Dynamically set base URL
+    const BASE_URL = `${window.location.origin}/Recipe`;
     let selectedCategories = [];
 
     // ✅ Define category mapping (Text Labels)
@@ -16,19 +16,19 @@ document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("#categoryList .dropdown-item").forEach(item => {
         item.addEventListener("click", function (event) {
             event.preventDefault();
-            let categoryValue = this.getAttribute("data-value"); // ✅ Capture category as a string
+            let categoryValue = this.getAttribute("data-value");
 
             if (selectedCategories.includes(categoryValue)) {
-                selectedCategories = selectedCategories.filter(c => c !== categoryValue); // ✅ Remove if already selected
+                selectedCategories = selectedCategories.filter(c => c !== categoryValue);
             } else {
-                selectedCategories.push(categoryValue); // ✅ Add new selection
+                selectedCategories.push(categoryValue);
             }
 
-            // ✅ Update button text to display selected categories
+            // ✅ Update button text
             document.getElementById("categoryDropdown").innerText =
                 selectedCategories.length > 0 ? selectedCategories.join(", ") : "Select Categories";
 
-            // ✅ Update hidden input with selected categories
+            // ✅ Update hidden input
             document.getElementById("categories").value = JSON.stringify(selectedCategories);
             console.log("✅ Selected Categories:", selectedCategories);
         });
@@ -46,28 +46,31 @@ document.addEventListener("DOMContentLoaded", function () {
     // ✅ Handle Recipe Submission (Add Recipe)
     document.getElementById("saveRecipe").addEventListener("click", function (event) {
         event.preventDefault();
-    
         let recipe = {
+            recipeId: "NewRecipe_" + Date.now(),
             name: document.getElementById("recipeName").value.trim(),
             tagLine: document.getElementById("tagLine").value.trim(),
             summary: document.getElementById("summary").value.trim(),
             ingredients: document.getElementById("ingredients").value.split(",").map(i => i.trim()),
             instructions: document.getElementById("instructions").value.split("\n").map(i => i.trim()),
-            categories: selectedCategories, // ✅ Ensure categories are sent correctly
+
+            // ✅ Convert categories from string to enum values
+            categories: selectedCategories.map(cat => categoryMapping[parseInt(cat)] || "Uncategorized"),
+            
             media: []
         };
-    
-        console.log("🔍 Sending Recipe:", JSON.stringify(recipe, null, 2));
-    
+
+        console.log("🔍 Final Recipe Object:", JSON.stringify(recipe, null, 2));
+
         fetch(`${BASE_URL}/Add`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(recipe)
         })
-        .then(response => response.json())  // ✅ Ensure valid JSON response
+        .then(response => response.json())
         .then(data => {
             console.log("📜 Server Response:", data);
-    
+
             if (data.success) {
                 console.log("✅ Recipe added successfully!");
                 $('#addRecipeModal').modal('hide');
@@ -81,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("❌ Failed to add recipe. Check console for details.");
         });
     });
-    
 
     // ✅ Fetch All Recipes
     function fetchRecipes() {
@@ -116,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        let searchRequest = { keyword: keyword};
+        let searchRequest = { keyword: keyword };
 
         console.log("🔍 Sending Search Request:", JSON.stringify(searchRequest));
 
