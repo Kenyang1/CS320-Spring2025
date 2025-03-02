@@ -3,7 +3,7 @@ namespace MyCookBookApi.Models
 {
     public class Recipe
     {
-        public required string RecipeId { get; set; }
+        public string RecipeId { get; set; }
         public required string Name { get; set; }
         public required string TagLine {get; set;}
         public required string Summary {get; set;}
@@ -12,11 +12,11 @@ namespace MyCookBookApi.Models
 
         // Optional: Categories to organize recipes (e.g., Breakfast, Dinner)
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public required List<CategoryType>? Categories { get; set; } = new List<CategoryType>();
+        public  List<CategoryType>? Categories { get; set; } = new List<CategoryType>();
 
         // Optional: Media such as images or videos with the recipe
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-        public required List<RecipeMedia>? Media { get; set; } = new List<RecipeMedia>();
+        public  List<RecipeMedia>? Media { get; set; } = new List<RecipeMedia>();
 
         public Recipe() { }
     }
