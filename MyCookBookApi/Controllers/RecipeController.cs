@@ -99,6 +99,22 @@ namespace MyCookBookApi.Controllers
             return CreatedAtAction(nameof(GetRecipeById), new { id = recipe.RecipeId }, recipe);
         }
 
+        [HttpPut("{id}")] 
+        public IActionResult UpdateRecipe(string id, [FromBody] Recipe recipe)
+        {
+            if (recipe == null || string.IsNullOrWhiteSpace(recipe.Name))
+            {
+                return BadRequest("Invalid Recipe Data.");
+            }
+
+            var updated = _recipeService.UpdateRecipe(id, recipe);
+            if (!updated) 
+            {
+                return NotFound("Recipe not found.");
+            }
+            return NoContent();
+        }
+        
         [HttpGet("{id}")] 
         public IActionResult GetRecipeById(string id) {
             var recipe = _recipeService.GetRecipeById(id);
