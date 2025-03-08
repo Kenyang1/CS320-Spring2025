@@ -45,28 +45,38 @@ public async Task<List<Recipe>> GetRecipesAsync()
             return JsonConvert.DeserializeObject<Recipe>(json);
         }
 
-public async Task<List<Recipe>> SearchRecipesAsync(RecipeSearchRequest searchRequest)
-{
-    var allRecipes = await GetRecipesAsync(); // ✅ Fetch all recipes first
+        public async Task<List<Recipe>> SearchRecipesAsync(RecipeSearchRequest searchRequest)
+        {
+            var allRecipes = await GetRecipesAsync(); // ✅ Fetch all recipes first
 
-    Console.WriteLine($"🔍 Searching for: {searchRequest.Keyword}");
+            Console.WriteLine($"🔍 Searching for: {searchRequest.Keyword}");
 
-    // ✅ Ensure keyword is not empty and convert to lowercase for case-insensitivity
-    string keyword = searchRequest.Keyword.ToLower();
+            // ✅ Ensure keyword is not empty and convert to lowercase for case-insensitivity
+            string keyword = searchRequest.Keyword.ToLower();
 
-    var filteredRecipes = allRecipes
-        .Where(r => 
-            (!string.IsNullOrEmpty(r.Name) && r.Name.ToLower().Contains(keyword)) ||
-            (!string.IsNullOrEmpty(r.Summary) && r.Summary.ToLower().Contains(keyword))
-        ).ToList();
+            var filteredRecipes = allRecipes
+                .Where(r => 
+                    (!string.IsNullOrEmpty(r.Name) && r.Name.ToLower().Contains(keyword)) ||
+                    (!string.IsNullOrEmpty(r.Summary) && r.Summary.ToLower().Contains(keyword))
+                ).ToList();
 
-    Console.WriteLine($"✅ Found Recipes: {JsonConvert.SerializeObject(filteredRecipes)}");
-    return filteredRecipes;
-}
-
-
+            Console.WriteLine($"✅ Found Recipes: {JsonConvert.SerializeObject(filteredRecipes)}");
+            return filteredRecipes;
+        }
 
 
+
+        public async Task<bool> UpdateRecipeAsync(Recipe recipe)
+        {
+            if (string.IsNullOrWhiteSpace(recipe.RecipeId))
+                return false;
+
+            var encodedId = Uri.EscapeDataString(recipe.RecipeId);
+            var content = new StringContent(JsonSerializer.Serialize(recipe), Encoding.UTF8, "application/json");
+            var response = await _httpClient.PutAsync($"{_baseUrl}/recipe/{encodedId}", content);
+            
+            return response.IsSuccessStatusCode;
+        }
          
         public async Task<bool> AddRecipeAsync(Recipe recipe)
         {
