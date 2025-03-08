@@ -99,5 +99,20 @@ namespace MyCookBookApp.Controllers
             return Json(new { success = true, message = "Recipe added successfully!" });
         }
 
+        // ✅ Edit a Recipe (Put /Recipe/{id})
+          [HttpPut("Edit/{id}")]
+        public async Task<IActionResult> EditRecipe(string id, [FromBody] Recipe recipe)
+        {
+            if (recipe == null || string.IsNullOrWhiteSpace(recipe.Name) ||
+                recipe.Ingredients == null || recipe.Ingredients.Count == 0 ||
+                recipe.Instructions == null || recipe.Instructions.Count == 0 ||
+                string.IsNullOrWhiteSpace(recipe.Summary) || recipe.Categories == null)
+            {
+                return BadRequest(new { success = false, message = "Invalid recipe data" });
+            }
+
+            bool updated = await _recipeService.UpdateRecipeAsync(recipe);
+            return Json(new { success = updated, message = updated ? "Recipe updated successfully" : "Failed to update recipe" });
+        }
     }
 }
