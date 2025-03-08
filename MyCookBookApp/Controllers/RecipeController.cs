@@ -20,10 +20,15 @@ namespace MyCookBookApp.Controllers
 
         // ✅ Show the Recipe Index Page
         [HttpGet("")]
-        public IActionResult Index()
+        // ✅ Mark Method as `async` and Change Return Type to `Task<IActionResult>`
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var recipes = await _recipeService.GetRecipesAsync(); // ✅ Now this is allowed
+
+            // ✅ Ensure Model is Never Null
+            return View(recipes ?? new List<Recipe>());
         }
+
 
         // ✅ Fetch All Recipes (GET /Recipe/GetAll)
         [HttpGet("GetAll")]
@@ -37,13 +42,20 @@ namespace MyCookBookApp.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetRecipeById(string id)
         {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                return BadRequest(new { success = false, message = "Recipe ID is required" }); // ✅ Handle missing ID
+            }
+
             var recipe = await _recipeService.GetRecipeByIdAsync(id);
             if (recipe == null)
             {
-                return NotFound(new { success = false, message = "Recipe not found" });
+                return NotFound(new { success = false, message = "Recipe not found" }); // ✅ Return proper JSON response
             }
-            return Json(recipe);
+
+            return Json(recipe); // ✅ Ensure JSON response
         }
+
 
         // ✅ Search for Recipes (POST /Recipe/Search)
         [HttpPost("Search")]

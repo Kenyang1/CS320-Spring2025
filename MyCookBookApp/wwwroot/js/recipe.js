@@ -110,6 +110,102 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    window.editRecipe = function (recipeId) {
+        let apiUrl = `${document.getElementById("apiBaseUrl").value}/recipe/${recipeId}`;
+        console.log("Fetching Recipe from:", apiUrl); // ✅ Debugging the request URL
+    
+        fetch(apiUrl)
+            .then(response => {
+                console.log("Response Status:", response.status); // ✅ Log status
+                if (response.status === 404) { // ✅ Handle 404 Not Found
+                    throw new Error("Recipe not found (404 Not Found)");
+                }
+                if (!response.ok) {
+                    return response.text().then(text => { throw new Error(`Error ${response.status}: ${text}`); });
+                }
+                return response.json();
+            })
+            .then(recipe => {
+                if (!recipe) {
+                    console.error("Recipe not found in response");
+                    alert("Recipe not found.");
+                    return;
+                }
+    
+                // ✅ Populate Modal Fields with Recipe Data
+                document.getElementById("editRecipeId").value = recipe.recipeId;
+                document.getElementById("editRecipeName").value = recipe.name;
+                document.getElementById("editTagLine").value = recipe.tagLine || "";
+                document.getElementById("editSummary").value = recipe.summary || "";
+                document.getElementById("editIngredients").value = recipe.ingredients ? recipe.ingredients.join(", ") : "";
+                document.getElementById("editInstructions").value = recipe.instructions ? recipe.instructions.join("\n") : "";
+    
+                // ✅ Show the Edit Modal
+                let editRecipeModal = new bootstrap.Modal(document.getElementById('editRecipeModal'));
+                editRecipeModal.show();
+            })
+            .catch(error => {
+                console.error("Error fetching recipe:", error);
+                alert(`❌ Failed to load recipe: ${error.message}`);
+            });
+    };
+    
+
+    // Function to send update request to API
+    window.updateRecipe = function () {
+        console.log("Update button clicked!");
+
+        let recipe = {
+            recipeId: document.getElementById("editRecipeId").value.trim(),
+            name: document.getElementById("editRecipeName").value.trim(),
+            tagLine: document.getElementById("editTagLine").value.trim(),
+            summary: document.getElementById("editSummary").value.trim(),
+            ingredients: document.getElementById("editIngredients").value.split(",").map(i => i.trim()),
+            instructions: document.getElementById("editInstructions").value.split("\n").map(i => i.trim()),
+            categories: [] // Modify this if categories are needed
+        };
+
+        console.log("Updated Recipe Object:", JSON.stringify(recipe, null, 2));
+
+        // Ensure recipe ID is provided before sending request
+        const recipeId = recipe.recipeId;
+        if (!recipeId) {
+            console.error("No recipe ID found!");
+            alert("Recipe ID is missing. Cannot update.");
+            return;
+        }
+
+        fetch(`${BASE_URL}/Edit/${recipeId}`, {
+            method: "PUT",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(recipe)
+        })
+        .then(response => {
+            console.log("Response Status:", response.status);
+            if (!response.ok) {
+                return response.text().then(text => { throw new Error(`Error ${response.status}: ${text}`); });
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Recipe updated successfully:", data);
+            alert("Recipe updated successfully!");
+
+            // Close the modal and refresh the recipes list
+            let modal = bootstrap.Modal.getInstance(document.getElementById('editRecipeModal'));
+            modal.hide();
+            setTimeout(() => {
+                location.reload(); // Refresh the page to reflect updates
+            }, 500);
+        })
+        .catch(error => {
+            console.error("Error updating recipe:", error);
+            alert("Failed to update recipe: " + error.message);
+        });
+    };
+
+
+
     // ✅ Function to Search Recipes
     window.searchRecipes = function () {
         let keyword = document.getElementById("searchInput").value.trim();
@@ -160,13 +256,20 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p class="card-text">${recipe.ingredients ? recipe.ingredients.join(", ") : "N/A"}</p>
                             <h6>Instructions</h6>
                             <p class="card-text">${recipe.instructions ? recipe.instructions.join("<br>") : "N/A"}</p>
+
+                            <!-- ✅ Add Edit Button -->
+                            <button class="btn btn-warning btn-sm mt-2" onclick="editRecipe('${recipe.recipeId}')">
+                                Edit
+                            </button>
                         </div>
                         <div class="card-footer text-muted text-left" style="font-size: 0.85rem;">
                             <b>Categories: </b>${categoriesText}
                         </div>
                     </div>
                 </div>`;
+
             cardContainer.innerHTML += card;
         });
     }
 });
+

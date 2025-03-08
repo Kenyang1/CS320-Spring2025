@@ -29,16 +29,34 @@
         <div class="alert alert-warning text-center">@ViewData["ErrorMessage"]</div>
     }
 
-    <!-- ✅ Recipes Container (Now Fully Dynamic) -->
+<!-- ✅ Check if Model is Null Before Looping -->
+@if (Model != null && Model.Any())
+{
     <div class="row">
         <div class="col-md-12" id="recipeCards">
-            <!-- Recipe cards dynamically loaded here -->
+            @foreach (var recipe in Model)
+            {
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title">@recipe.Name</h5>
+                        <p class="text-muted">@recipe.TagLine</p>
+                        
+                        <!-- ✅ Add Edit Button Without Changing Search Functionality -->
+                        <button class="btn btn-warning btn-sm" onclick="editRecipe('@recipe.RecipeId')">Edit</button>
+                    </div>
+                </div>
+            }
         </div>
     </div>
-</div>
+}
+else
+{
+    <div class="alert alert-warning text-center">No recipes found.</div>
+}
+
+
 
 @Html.Partial("_AddRecipeModal")
-
 @Html.Partial("_EditRecipeModal")
 
 <!-- ✅ JavaScript for Dynamic Recipe Loading -->

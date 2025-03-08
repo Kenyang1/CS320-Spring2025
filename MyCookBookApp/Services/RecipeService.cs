@@ -72,12 +72,14 @@ public async Task<List<Recipe>> GetRecipesAsync()
                 return false;
 
             var encodedId = Uri.EscapeDataString(recipe.RecipeId);
-            var content = new StringContent(JsonSerializer.Serialize(recipe), Encoding.UTF8, "application/json");
+            var json = JsonConvert.SerializeObject(recipe);
+            var content = new StringContent(json, Encoding.UTF8, "application/json"); 
+
             var response = await _httpClient.PutAsync($"{_baseUrl}/recipe/{encodedId}", content);
             
             return response.IsSuccessStatusCode;
         }
-         
+
         public async Task<bool> AddRecipeAsync(Recipe recipe)
         {
             var json = JsonConvert.SerializeObject(recipe, Formatting.Indented);
