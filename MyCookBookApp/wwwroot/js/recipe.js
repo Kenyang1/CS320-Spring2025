@@ -111,13 +111,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.editRecipe = function (recipeId) {
-        let apiUrl = `${document.getElementById("apiBaseUrl").value}/recipe/${recipeId}`;
-        console.log("Fetching Recipe from:", apiUrl); // ✅ Debugging the request URL
+        let apiBaseUrl = document.getElementById("apiBaseUrl")?.value || "http://localhost:5090/api"; // ✅ Use correct API URL
+        let apiUrl = `${apiBaseUrl}/recipe/${recipeId}`;
+    
+        console.log("Fetching Recipe from:", apiUrl); // ✅ Log full API URL
     
         fetch(apiUrl)
             .then(response => {
-                console.log("Response Status:", response.status); // ✅ Log status
-                if (response.status === 404) { // ✅ Handle 404 Not Found
+                console.log("Response Status:", response.status);
+                if (response.status === 404) { 
                     throw new Error("Recipe not found (404 Not Found)");
                 }
                 if (!response.ok) {
@@ -126,13 +128,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 return response.json();
             })
             .then(recipe => {
-                if (!recipe) {
-                    console.error("Recipe not found in response");
-                    alert("Recipe not found.");
-                    return;
-                }
+                console.log("✅ Recipe Data:", recipe); // ✅ Log the retrieved recipe
     
-                // ✅ Populate Modal Fields with Recipe Data
                 document.getElementById("editRecipeId").value = recipe.recipeId;
                 document.getElementById("editRecipeName").value = recipe.name;
                 document.getElementById("editTagLine").value = recipe.tagLine || "";
@@ -140,15 +137,15 @@ document.addEventListener("DOMContentLoaded", function () {
                 document.getElementById("editIngredients").value = recipe.ingredients ? recipe.ingredients.join(", ") : "";
                 document.getElementById("editInstructions").value = recipe.instructions ? recipe.instructions.join("\n") : "";
     
-                // ✅ Show the Edit Modal
                 let editRecipeModal = new bootstrap.Modal(document.getElementById('editRecipeModal'));
                 editRecipeModal.show();
             })
             .catch(error => {
-                console.error("Error fetching recipe:", error);
+                console.error("❌ Error fetching recipe:", error);
                 alert(`❌ Failed to load recipe: ${error.message}`);
             });
     };
+    
     
 
     // Function to send update request to API
@@ -236,14 +233,13 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("❌ Search error:", error));
     };
 
-    // ✅ Display Recipes Dynamically
     function displayRecipes(recipes) {
         let cardContainer = document.getElementById("recipeCards");
         cardContainer.innerHTML = "";
-
+    
         recipes.forEach(recipe => {
             let categoriesText = (recipe.categories || []).join(" | ");
-
+    
             let card = `
                 <div class="mb-3">
                     <div class="card shadow-sm">
@@ -256,8 +252,8 @@ document.addEventListener("DOMContentLoaded", function () {
                             <p class="card-text">${recipe.ingredients ? recipe.ingredients.join(", ") : "N/A"}</p>
                             <h6>Instructions</h6>
                             <p class="card-text">${recipe.instructions ? recipe.instructions.join("<br>") : "N/A"}</p>
-
-                            <!-- ✅ Add Edit Button -->
+    
+                            <!-- ✅ Fix: Ensure Edit Button Passes the Correct Recipe ID -->
                             <button class="btn btn-warning btn-sm mt-2" onclick="editRecipe('${recipe.recipeId}')">
                                 Edit
                             </button>
@@ -267,9 +263,10 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                 </div>`;
-
+    
             cardContainer.innerHTML += card;
         });
     }
+    
 });
 

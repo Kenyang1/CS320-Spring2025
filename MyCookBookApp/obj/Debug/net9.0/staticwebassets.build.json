@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cPWk+EeodwQivyF3Pk1Kl122dFZbMdFacz1IVwq6Gi8=",
+  "Hash": "LcMj40H+MntWHLVQcuugwIzR8/A3u1iiU/uKonf84bA=",
   "Source": "MyCookBookApp",
   "BasePath": "_content/MyCookBookApp",
   "Mode": "Default",
@@ -353,12 +353,12 @@
       "OriginalItemSpec": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Identity": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-rq2iul7g2c.gz",
+      "Identity": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-1sf41cg67r.gz",
       "SourceId": "MyCookBookApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "_content/MyCookBookApp",
-      "RelativePath": "js/recipe#[.{fingerprint=rq2iul7g2c}]?.js.gz",
+      "RelativePath": "js/recipe#[.{fingerprint=1sf41cg67r}]?.js.gz",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -367,8 +367,8 @@
       "RelatedAsset": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "c776f3sf60",
-      "Integrity": "CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0=",
+      "Fingerprint": "tro9cbucaf",
+      "Integrity": "V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js"
@@ -1480,8 +1480,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "rq2iul7g2c",
-      "Integrity": "Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU=",
+      "Fingerprint": "1sf41cg67r",
+      "Integrity": "HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\recipe.js"
@@ -3366,13 +3366,13 @@
       ]
     },
     {
-      "Route": "js/recipe.js",
-      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-rq2iul7g2c.gz",
+      "Route": "js/recipe.1sf41cg67r.js",
+      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-1sf41cg67r.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000344471237"
+          "Quality": "0.000347222222"
         }
       ],
       "ResponseHeaders": [
@@ -3382,19 +3382,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "2902"
+          "Value": "2879"
         },
         {
           "Name": "ETag",
-          "Value": "\"CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0=\""
+          "Value": "\"V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "no-cache"
+          "Value": "max-age=31536000, immutable"
         },
         {
           "Name": "Content-Encoding",
@@ -3410,18 +3410,26 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU=\""
+          "Value": "W/\"HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls=\""
         }
       ],
       "EndpointProperties": [
         {
+          "Name": "fingerprint",
+          "Value": "1sf41cg67r"
+        },
+        {
+          "Name": "label",
+          "Value": "js/recipe.js"
+        },
+        {
           "Name": "integrity",
-          "Value": "sha256-Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU="
+          "Value": "sha256-HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls="
         }
       ]
     },
     {
-      "Route": "js/recipe.js",
+      "Route": "js/recipe.1sf41cg67r.js",
       "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3431,7 +3439,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11682"
+          "Value": "11546"
         },
         {
           "Name": "Content-Type",
@@ -3439,121 +3447,21 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU=\""
+          "Value": "\"HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU="
-        }
-      ]
-    },
-    {
-      "Route": "js/recipe.js.gz",
-      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-rq2iul7g2c.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2902"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0="
-        }
-      ]
-    },
-    {
-      "Route": "js/recipe.rq2iul7g2c.js",
-      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-rq2iul7g2c.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000344471237"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2902"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
         },
         {
           "Name": "Cache-Control",
           "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rq2iul7g2c"
+          "Value": "1sf41cg67r"
         },
         {
           "Name": "label",
@@ -3561,13 +3469,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU="
+          "Value": "sha256-HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls="
         }
       ]
     },
     {
-      "Route": "js/recipe.rq2iul7g2c.js",
-      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js",
+      "Route": "js/recipe.1sf41cg67r.js.gz",
+      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-1sf41cg67r.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -3576,7 +3484,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "11682"
+          "Value": "2879"
         },
         {
           "Name": "Content-Type",
@@ -3584,56 +3492,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU=\""
+          "Value": "\"V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "rq2iul7g2c"
-        },
-        {
-          "Name": "label",
-          "Value": "js/recipe.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-Y6CcwV055M8xnjR3hS/Eu1i/w4fE+UYB68hpXsa9/rU="
-        }
-      ]
-    },
-    {
-      "Route": "js/recipe.rq2iul7g2c.js.gz",
-      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-rq2iul7g2c.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "2902"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:48:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3651,7 +3514,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "rq2iul7g2c"
+          "Value": "1sf41cg67r"
         },
         {
           "Name": "label",
@@ -3659,7 +3522,144 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-CLvJ9SHzdjnBhUSf1da0DL1q1PeiJXExg76oDDc/qg0="
+          "Value": "sha256-V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js",
+      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-1sf41cg67r.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000347222222"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2879"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js",
+      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\wwwroot\\js\\recipe.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "11546"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-HwaK5s+ZJNm/HIrH6lNfokRnmZNLRvBxhr9eZqOA1ls="
+        }
+      ]
+    },
+    {
+      "Route": "js/recipe.js.gz",
+      "AssetFile": "C:\\Users\\kenya\\CS320-Spring2025\\MyCookBookApp\\obj\\Debug\\net9.0\\compressed\\9jrwmdcbpk-1sf41cg67r.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2879"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 10 Mar 2025 18:55:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-V6L77UBdWxX6+TRVTSxf+qiWBYItjiBxCwihags+UzY="
         }
       ]
     },
@@ -21650,7 +21650,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21711,7 +21711,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21756,7 +21756,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21811,7 +21811,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21872,7 +21872,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21917,7 +21917,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -21972,7 +21972,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22025,7 +22025,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22062,7 +22062,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22109,7 +22109,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22162,7 +22162,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -22199,7 +22199,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 08 Mar 2025 20:42:04 GMT"
+          "Value": "Mon, 10 Mar 2025 18:56:11 GMT"
         },
         {
           "Name": "Cache-Control",

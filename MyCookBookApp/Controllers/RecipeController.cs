@@ -25,7 +25,6 @@ namespace MyCookBookApp.Controllers
         {
             var recipes = await _recipeService.GetRecipesAsync(); // ✅ Now this is allowed
 
-            // ✅ Ensure Model is Never Null
             return View(recipes ?? new List<Recipe>());
         }
 
@@ -53,7 +52,7 @@ namespace MyCookBookApp.Controllers
                 return NotFound(new { success = false, message = "Recipe not found" }); // ✅ Return proper JSON response
             }
 
-            return Json(recipe); // ✅ Ensure JSON response
+            return Json(recipe); 
         }
 
 
